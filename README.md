@@ -44,7 +44,7 @@ Data
 -----
 Data accepted is in the tsv format where first component is the context and second is the reply
 
-TSV format Ubuntu Dialog Data can be found [here](https://drive.google.com/file/d/0BwPa9lrosQKdSTZxZ0tydUFGWE0/view) or [Github](https://github.com/Samurais/Neural_Conversation_Models_Ubuntu_Corpus).
+TSV format Ubuntu Dialog Data can be found [here](https://drive.google.com/file/d/0BwPa9lrosQKdSTZxZ0tydUFGWE0/view) or [Git repo](http://git.oschina.net/ubiware/neural_conversation_models_ubuntu_corpus).
  
 example :-
 1. What are you doing ? \t Writing seq2seq model . 
