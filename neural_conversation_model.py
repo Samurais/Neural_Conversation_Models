@@ -70,8 +70,8 @@ _buckets = [(5, 10), (10, 15), (20, 25), (40, 50)]
 def read_chat_data(data_path,vocabulary_path, max_size=None):
     counter = 0
     vocab, _ = initialize_vocabulary(vocabulary_path)
-    print len(vocab)
-    print max_size
+    print(len(vocab))
+    print(max_size)
     data_set = [[] for _ in _buckets]
     with codecs.open(data_path, "rb") as fi:
         for line in fi.readlines():
@@ -102,7 +102,7 @@ def create_model(session, forward_only, beam_search, beam_size = 10, attention =
       FLAGS.size, FLAGS.num_layers, FLAGS.max_gradient_norm, FLAGS.batch_size,
       FLAGS.learning_rate, FLAGS.learning_rate_decay_factor,
       forward_only=forward_only, beam_search=beam_search, beam_size=beam_size, attention=attention)
-  print FLAGS.train_dir
+  print(FLAGS.train_dir)
   ckpt = tf.train.get_checkpoint_state(FLAGS.train_dir)
 
   # ckpt.model_checkpoint_path ="./big_models/chat_bot.ckpt-183600"
@@ -122,7 +122,7 @@ def create_models(path, en_vocab_size, session, forward_only, beam_search, beam_
       FLAGS.size, FLAGS.num_layers, FLAGS.max_gradient_norm, FLAGS.batch_size,
       FLAGS.learning_rate, FLAGS.learning_rate_decay_factor,
       forward_only=forward_only, beam_search=beam_search, beam_size=beam_size, attention=attention)
-  print FLAGS.train_dir
+  print(FLAGS.train_dir)
   ckpt = tf.train.get_checkpoint_state(path)
 
   # ckpt.model_checkpoint_path ="./big_models/chat_bot.ckpt-183600"
@@ -155,7 +155,7 @@ def train():
     model = create_model(sess, False,beam_search=beam_search, beam_size=beam_size, attention=attention)
 
     # Read data into buckets and compute their sizes.
-    print ("Reading development and training data (limit: %d)."
+    print("Reading development and training data (limit: %d)."
            % FLAGS.max_train_data_size)
     train_set =read_chat_data(data_path,vocab_path, FLAGS.max_train_data_size)
     dev_set =read_chat_data(dev_data,vocab_path, FLAGS.max_train_data_size)
@@ -195,7 +195,7 @@ def train():
       # Once in a while, we save checkpoint, print statistics, and run evals.
       if current_step % FLAGS.steps_per_checkpoint == 0:
         # Print statistics for the previous epoch.
-        print "Running epochs"
+        print("Running epochs")
         perplexity = math.exp(loss) if loss < 300 else float('inf')
         print ("global step %d learning rate %.4f step-time %.2f perplexity "
                 "%.2f" % (model.global_step.eval(), model.learning_rate.eval(),
@@ -264,7 +264,7 @@ def decode():
                 paths[kk].append(symbol[i][curr[kk]])
                 curr[kk] = path[i][curr[kk]]
           recos = set()
-          print "Replies --------------------------------------->"
+          print("Replies --------------------------------------->")
           for kk in range(beam_size):
               foutputs = [int(logit)  for logit in paths[kk][::-1]]
 
@@ -275,7 +275,7 @@ def decode():
               rec = " ".join([tf.compat.as_str(rev_vocab[output]) for output in foutputs])
               if rec not in recos:
                       recos.add(rec)
-                      print rec
+                      print(rec)
 
           print("> ", "")
           sys.stdout.flush()

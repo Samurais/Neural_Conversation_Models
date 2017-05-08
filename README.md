@@ -18,9 +18,27 @@ https://arxiv.org/abs/1702.05512
 Prerequisites
 -------------
 
-- Python 2.7 or Python 3.3+
+- Python Python 3.3+
 - [NLTK](http://www.nltk.org/)
-- [TensorFlow](https://www.tensorflow.org/)
+- [TensorFlow](https://www.tensorflow.org/) 0.12.1
+
+Installations
+-----
+
+* Mac
+```
+virtualenv --no-site-packages -p /usr/local/bin/python3.6 ~/venv-py3
+source ~/venv-py3/bin/activate
+pip3 install --upgrade \
+ https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.1-py3-none-any.whl # for CPU Usage
+```
+
+* Linux with GPU Driver
+```
+virtualenv --no-site-packages -p /usr/local/bin/python3.6 ~/venv-py3
+source ~/venv-py3/bin/activate
+pip3 install --upgrade \ https://storage.googleapis.com/tensorflow/linux/gpu/tensorflow_gpu-0.12.1-cp34-cp34m-linux_x86_64.whl
+```
 
 Data
 -----
@@ -41,7 +59,6 @@ To train a model with Ubuntu dataset:
 To test an existing model:
 
     $ python neural_conversation_model.py --train_dir ubuntu/ --en_vocab_size 60000 --size 512 --data_path ubuntu/train.tsv --dev_data ubuntu/valid.tsv  --vocab_path ubuntu/60k_vocan.en --attention --decode --beam_search --beam_size 25
-
 
 Todo
 -----

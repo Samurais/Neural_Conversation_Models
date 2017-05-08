@@ -1,3 +1,4 @@
 ubuntu
 *.swo
 *.swp
+__pycache__
