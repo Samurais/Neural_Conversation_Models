@@ -73,8 +73,10 @@ def read_chat_data(data_path,vocabulary_path, max_size=None):
     print(len(vocab))
     print(max_size)
     data_set = [[] for _ in _buckets]
+    # http://stackoverflow.com/questions/33054527/python-3-5-typeerror-a-bytes-like-object-is-required-not-str-when-writing-t
     with codecs.open(data_path, "rb") as fi:
         for line in fi.readlines():
+            line = line.decode('utf8').strip()
             counter += 1
             if max_size!=0 and counter > max_size:
                 break
