@@ -2,3 +2,4 @@ ubuntu
 *.swo
 *.swp
 __pycache__
+data
