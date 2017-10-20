@@ -26,6 +26,9 @@ translation, or even constructing automated replies to emails.
 * model_with_buckets: A convenience function to create models with bucketing
     (see the tutorial above for an explanation of why and how to use it).
 """
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
 
 from six.moves import xrange  # pylint: disable=redefined-builtin
 from six.moves import zip     # pylint: disable=redefined-builtin
