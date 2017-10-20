@@ -10,7 +10,9 @@ baseDir=$(cd `dirname "$0"`;pwd)
 # main 
 [ -z "${BASH_SOURCE[0]}" -o "${BASH_SOURCE[0]}" = "$0" ] || return
 # source /root/venv-py3/bin/activate
-cd $baseDir
+# http://stackoverflow.com/questions/35911252/disable-tensorflow-debugging-information
+export TF_CPP_MIN_LOG_LEVEL=3
+cd $baseDir/..
 python neural_conversation_model.py \
     --train_dir ubuntu/ \
     --en_vocab_size 60000 \
